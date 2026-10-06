@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Document(collection = "event")
 public class Event {
     @Id
-    private Long id;
+    private String id;
 
     private String eventType;
 
@@ -26,7 +26,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(Long id, String eventType, LocalDateTime timestamp, String userId, String source, HttpRequestValues.Metadata metadata, Object data) {
+    public Event(String id, String eventType, LocalDateTime timestamp, String userId, String source, HttpRequestValues.Metadata metadata, Object data) {
         this.id = id;
         this.eventType = eventType;
         this.timestamp = timestamp;
@@ -36,9 +36,9 @@ public class Event {
         this.data = data;
     }
 
-    public Long getId() {
+    public String getId() {
         return id; }
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id; }
 
     public String getEventType() {

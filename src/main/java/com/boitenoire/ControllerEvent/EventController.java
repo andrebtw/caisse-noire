@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "events")
+@RequestMapping("/events")
 public class EventController {
 
     private final EventService eventService;
@@ -26,24 +26,28 @@ public class EventController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Event> get(@PathVariable Long id) {
+    public ResponseEntity<Event> get(@PathVariable String id) {
         return eventService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
     @PostMapping
     public ResponseEntity<Event> create(@RequestBody Event newEvent) {
+
         Event ev = new Event();
+
         ev.setId(newEvent.getId());
         ev.setEventType(newEvent.getEventType());
         ev.setData(newEvent.getData());
         ev.setMetadata(newEvent.getMetadata());
         ev.setUserId(newEvent.getUserId());
         ev.setSource(newEvent.getSource());
-        ev.setData(newEvent.getData());
+
         Event create = eventService.create(ev);
-        return ResponseEntity.created(URI.create("boite-noire/events" + create.getId())).body(create);
 
+        return ResponseEntity
+                .created(URI.create("/boite-noire/events/" + create.getId()))
+                .body(create);
     }
-
 }

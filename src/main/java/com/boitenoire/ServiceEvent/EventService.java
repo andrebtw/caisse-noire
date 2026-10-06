@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface EventService {
     List<Event> findAll();
-    Optional<Event> findById(Long id);
+    Optional<Event> findById(String id);
     Event create(Event event);
 }

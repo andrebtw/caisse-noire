@@ -1,2 +1,4 @@
 For this project we will use the embedded data MongoDB schema to store the events.
-The reason is that we only have a collection called "event" that will have at least 100k documents in the database with no references to make to another collection. Reference data MongoDB scheme seems useless.
+The reason is that we only have a collection called "event" that will have at least
+100k documents in the database with no references to make to another collection.
+Reference data MongoDB scheme seems useless.
